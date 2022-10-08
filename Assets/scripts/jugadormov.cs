@@ -1,27 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class jugadormov : MonoBehaviour
 {
-
+    int contador;
+    Rigidbody body;
+    Vector2 direction;
+    public float Monedas;
     public float movimientoEjeX;
     public float movimientoEjeY;
     public float movimientoEjeZ;
 
+    public AudioSource Moneda;
+    public AudioSource Musica;
+
+    public GameObject SonidoMoneda;
+    public GameObject SonidoCaida;
+
     public float velocidaddeMovimiento = 1.5f;
 
-    Rigidbody body;
-    Vector2 direction;
+    public void OnTriggerEnter(Collider other)
+    {
+        Destroy(other.gameObject);
+        contador =  contador +1;
+
+    }
+    public void Awake()
+    {
+        body =GetComponent<Rigidbody>();
+        contador = 0; 
+    }
 
     [SerializeField]
-    float IMPULSE = 4F;
+    float IMPULSE = 2F;
 
-   
-   
-    
-    
-   void Update()
+    private void Start()
+    {
+        
+    }
+
+
+
+    void Update()
     {
 
         movimientoEjeX = Input.GetAxis("Horizontal") * Time.deltaTime* IMPULSE * velocidaddeMovimiento;

@@ -12,7 +12,7 @@ public class Puntos : MonoBehaviour
 
     private void Update()
     {
-        textoPuntos.text ="Puntos" + puntos.ToString();
+        textoPuntos.text ="Monedas:0" + puntos.ToString();
         if(puntos<0)
         {
             puntos= 0;
