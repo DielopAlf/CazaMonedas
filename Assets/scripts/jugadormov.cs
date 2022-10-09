@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class jugadormov : MonoBehaviour
 {
@@ -9,9 +10,19 @@ public class jugadormov : MonoBehaviour
     Rigidbody rb;
     public Text puntuacion;
     public Text Victoria;
+
+
     Vector2 direction;
     [SerializeField]
     float IMPULSE = 2F;
+
+    
+
+    [SerializeField]
+    GameObject prebaParticles;
+
+    [SerializeField]
+    GameObject deadScreen;
 
     public float movimientoEjeX;
     public float movimientoEjeY;
@@ -20,7 +31,12 @@ public class jugadormov : MonoBehaviour
 
   
     public float velocidaddeMovimiento = 1.5f;
+    private void Start()
+    {
+   
 
+  
+    }
     public void OnTriggerEnter(Collider other)
     {
         Destroy(other.gameObject);
@@ -28,9 +44,10 @@ public class jugadormov : MonoBehaviour
         actualizarmarcador();
        if (contador>= 10)
             {
-            Victoria.gameObject.SetActive(true); 
-              
-             }
+            Victoria.gameObject.SetActive(true);
+          
+
+        }
 
     }
 
@@ -45,6 +62,8 @@ public class jugadormov : MonoBehaviour
         contador = 0;
         actualizarmarcador();
         Victoria.gameObject.SetActive(false);
+
+       
     }
 
 
@@ -56,6 +75,13 @@ public class jugadormov : MonoBehaviour
         movimientoEjeZ= Input.GetAxis("Vertical")*Time.deltaTime* IMPULSE * velocidaddeMovimiento;
         transform.Translate(movimientoEjeX, movimientoEjeY, movimientoEjeZ);
 
-
     }
+    public void ClickEnBoton() 
+    {
+
+        Debug.Log("ha clicado");
+        SceneManager.LoadScene(0);
+    }
+
+
 }
