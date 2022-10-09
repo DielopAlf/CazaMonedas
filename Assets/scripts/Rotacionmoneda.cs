@@ -6,10 +6,10 @@ public class Rotacionmoneda : MonoBehaviour
     
 {
     [SerializeField]
-    float rotacionZ = 10f;
+    float rotacionX = 10f;
     void Update()
     {
-        transform.Rotate(0f,0f,rotacionZ * Time.deltaTime);
+        transform.Rotate(rotacionX,0f,0f * Time.deltaTime);
 
     }
 }

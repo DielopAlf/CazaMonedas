@@ -6,43 +6,49 @@ using UnityEngine.UI;
 public class jugadormov : MonoBehaviour
 {
     int contador;
-    Rigidbody body;
+    Rigidbody rb;
+    public Text puntuacion;
+    public Text Victoria;
     Vector2 direction;
-    public float Monedas;
+    [SerializeField]
+    float IMPULSE = 2F;
+
     public float movimientoEjeX;
     public float movimientoEjeY;
     public float movimientoEjeZ;
 
-    public AudioSource Moneda;
-    public AudioSource Musica;
 
-    public GameObject SonidoMoneda;
-    public GameObject SonidoCaida;
-
+  
     public float velocidaddeMovimiento = 1.5f;
 
     public void OnTriggerEnter(Collider other)
     {
         Destroy(other.gameObject);
-        contador =  contador +1;
+        contador = contador +1;
+        actualizarmarcador();
+       if (contador>= 10)
+            {
+            Victoria.gameObject.SetActive(true); 
+              
+             }
 
     }
+
+    private void actualizarmarcador() 
+    {
+        puntuacion.text="Monedas:"+contador;
+    }
+
     public void Awake()
     {
-        body =GetComponent<Rigidbody>();
-        contador = 0; 
-    }
-
-    [SerializeField]
-    float IMPULSE = 2F;
-
-    private void Start()
-    {
-        
+        rb=GetComponent<Rigidbody>();
+        contador = 0;
+        actualizarmarcador();
+        Victoria.gameObject.SetActive(false);
     }
 
 
-
+ 
     void Update()
     {
 
