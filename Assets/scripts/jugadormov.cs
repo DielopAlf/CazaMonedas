@@ -76,6 +76,7 @@ public class jugadormov : MonoBehaviour
         transform.Translate(movimientoEjeX, movimientoEjeY, movimientoEjeZ);
 
     }
+   
     public void ClickEnBoton() 
     {
 
