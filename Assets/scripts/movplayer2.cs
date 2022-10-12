@@ -18,7 +18,7 @@ public class movplayer2 : MonoBehaviour
     {
         float movimientoHorizontal = Input.GetAxis("Horizontal");
         float movimientoVertical = Input.GetAxis("Vertical");
-        Vector3 movimiento = new Vector3(movimientoHorizontal, 0, movimientoVertical);
+        Vector3 movimiento = new Vector3(movimientoHorizontal,0, movimientoVertical);
         rb.AddForce(movimiento*velocidad);
     }
 }

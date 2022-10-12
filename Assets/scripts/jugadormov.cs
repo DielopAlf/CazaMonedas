@@ -7,13 +7,17 @@ using UnityEngine.SceneManagement;
 public class jugadormov : MonoBehaviour
 {
     int contador;
+
     Rigidbody rb;
+    Vector2 direction;
+
+    [SerializeField]
+
     public Text puntuacion;
     public Text Victoria;
+  
 
-
-    Vector2 direction;
-    [SerializeField]
+   
     float IMPULSE = 2F;
 
     
@@ -31,11 +35,10 @@ public class jugadormov : MonoBehaviour
 
   
     public float velocidaddeMovimiento = 1.5f;
-    private void Start()
+    
+    void Start()
     {
-   
-
-  
+    rb=GetComponent<Rigidbody>();
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -68,14 +71,17 @@ public class jugadormov : MonoBehaviour
 
 
  
-    void Update()
+    public void FixedUpdate()
     {
 
         movimientoEjeX = Input.GetAxis("Horizontal") * Time.deltaTime* IMPULSE * velocidaddeMovimiento;
         movimientoEjeZ= Input.GetAxis("Vertical")*Time.deltaTime* IMPULSE * velocidaddeMovimiento;
-        transform.Translate(movimientoEjeX, movimientoEjeY, movimientoEjeZ);
-
+        transform.Translate(movimientoEjeX, movimientoEjeY,movimientoEjeZ);
     }
+   
+
+
+   
    
     public void ClickEnBoton() 
     {
