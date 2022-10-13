@@ -43,11 +43,11 @@ public class jugadormov : MonoBehaviour
         Destroy(other.gameObject); // Para que las monedas cuando se toquen desaparezcan.
         contador = contador +1; //Cada vez que se coga una moneda sumara un punto.
         actualizarmarcador(); //Aqui usé un  método llamado extract Method  (se realiza seleccionando el texto y presionando ctrl+.) 
-        //esto es para poder cambiar el no,bre puntuacion de la linea usada (puntuacion.text="puntuacion"+contador;) para que el texto 
+        //esto es para poder cambiar el nombre puntuacion de la linea usada (puntuacion.text="puntuacion"+contador;) para que el texto 
         //se vaya modificando.
 
        if (contador>= 10) //Asignando el valor elegido para ganar el juego.
-            {
+       {
             Victoria.gameObject.SetActive(true);//la meta se activara cuando se llegue a dicho valor.
           
 
@@ -59,7 +59,7 @@ public class jugadormov : MonoBehaviour
     {
         puntuacion.text="Monedas:"+contador; //para asignar el texto de monedas  la pantalla y este vaya aumentando.
     }
-
+    
     public void Awake()
     {
         rb=GetComponent<Rigidbody>();//Para que el jugador empieze con 0 monedas y vayan sumandose a medida que las coga.
